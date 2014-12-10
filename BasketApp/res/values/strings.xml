@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App Entrenador Basket</string>
+    <string name="splash_title">App Basket</string>
+    <string name="splash_subtitle">Para entrenadores de basket</string>
+    <string name="splash_info">V.0</string>
+    <string name="menu_title">Menú</string>
+    <string name="ayuda_title">Ayuda</string>
+    <string name="calendario_title">Calendario</string>
+    <string name="equipo_title">Equipo</string>
+    <string name="entrenamiento_title">Entrenamiento</string>
+</resources>
