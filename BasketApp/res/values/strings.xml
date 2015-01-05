@@ -4,9 +4,36 @@
     <string name="splash_title">App Basket</string>
     <string name="splash_subtitle">Para entrenadores de basket</string>
     <string name="splash_info">V.0</string>
+    <!-- Titulos -->
     <string name="menu_title">Menú</string>
     <string name="ayuda_title">Ayuda</string>
     <string name="calendario_title">Calendario</string>
     <string name="equipo_title">Equipo</string>
-    <string name="entrenamiento_title">Entrenamiento</string>
+    <string name="jugadores_equipo">Mis Jugadores</string>
+    <string name="entrenamiento_title">Entrenamiento</string>    
+    <string name="jugadores_title">Jugadores</string>
+    <string name="jugadores_ficha">Ficha</string>
+    <string name="entrenamientos_title">Mis Entrenamientos</string>
+    <!-- Botones -->
+    <string name="anadir_button">Añadir</string>
+    <string name="buscar_button">Buscar</string>
+    <string name="salir_button">Salir</string>
+    <string name="editar_button">Editar</string>
+    <string name="eliminar_button">X</string>
+    <string name="crear_button">Crear</string>
+    <string name="ficha_button">Ficha</string>
+    <string name="detalles_button">Detalles</string>
+    <string name="apps_button">Más Apps del Creador</string>
+    <!-- Ficha -->
+    <string name="txtNombre">Nombre:</string>
+    <string name="txtFechaNacimiento">Fecha Nacimiento:</string>
+    <string name="txtPeso">Peso:</string>
+    <string name="txtAltura">Altura:</string>
+    <string name="txtTelefono">Teléfono:</string>
+    <!-- Ayuda -->
+    <string name="txtInfoApp">Esta App permite a los entrenadores de Basket organizar mejor sus equipos, administrando los entrenamientos y guardando información de los jugadores.</string>
+    <string name="txtCorreo">Para cualquier sugerencia: correo@hotmail.es</string>
+    <string name="txtVersion">V.0:</string>
+    <!-- Entrenamientos -->
+    <string name="buscarTitulo">titulo</string>
 </resources>

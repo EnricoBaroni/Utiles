@@ -33,7 +33,6 @@ public class MenuActivity extends Activity {
         	    R.layout.menu_item, items);
         
         menuLista.setAdapter(adaptador);
-
         
         menuLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View itemClicked,
@@ -63,8 +62,6 @@ public class MenuActivity extends Activity {
                 }
             }
           });
-
-                    
     }
 }
         

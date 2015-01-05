@@ -126,55 +126,116 @@ public final class R {
         public static final int url=0x7f020045;
     }
     public static final class id {
-        public static final int ImageView_MenuBottom=0x7f0b0015;
-        public static final int ListView_Menu=0x7f0b0013;
-        public static final int LogoSplash=0x7f0b0016;
-        public static final int RelativeLayout01=0x7f0b0014;
-        public static final int botonmenu=0x7f0b0001;
-        public static final int botonroll=0x7f0b000f;
-        public static final int botonrollno=0x7f0b0012;
-        public static final int botonrollyes=0x7f0b0011;
-        public static final int confirmLayout=0x7f0b0010;
-        public static final int dice1=0x7f0b0004;
-        public static final int dice2=0x7f0b0005;
-        public static final int dice3=0x7f0b0006;
-        public static final int dice4=0x7f0b0008;
-        public static final int dice5=0x7f0b0009;
-        public static final int dice6=0x7f0b000a;
-        public static final int dice7=0x7f0b000c;
-        public static final int dice8=0x7f0b000d;
-        public static final int dice9=0x7f0b000e;
-        public static final int game_title=0x7f0b0002;
-        public static final int tableRow1=0x7f0b0003;
-        public static final int tableRow2=0x7f0b0007;
-        public static final int tableRow3=0x7f0b000b;
+        public static final int ImageView_MenuBottom=0x7f0b002e;
+        public static final int ListView_Menu=0x7f0b002c;
+        public static final int LogoSplash=0x7f0b002f;
+        public static final int RelativeLayout01=0x7f0b002d;
+        public static final int botonApps=0x7f0b0004;
+        public static final int botonanadir=0x7f0b001d;
+        public static final int botonbuscar=0x7f0b001a;
+        public static final int botoncrear=0x7f0b0029;
+        public static final int botondetalles=0x7f0b0027;
+        public static final int botoneditar=0x7f0b001e;
+        public static final int botoneliminar=0x7f0b001b;
+        public static final int botonficha=0x7f0b0026;
+        public static final int botonmenu=0x7f0b0016;
+        public static final int botonroll=0x7f0b0012;
+        public static final int botonrollno=0x7f0b0015;
+        public static final int botonrollyes=0x7f0b0014;
+        public static final int chkListaMultiple=0x7f0b002b;
+        public static final int confirmLayout=0x7f0b0013;
+        public static final int dice1=0x7f0b0007;
+        public static final int dice2=0x7f0b0008;
+        public static final int dice3=0x7f0b0009;
+        public static final int dice4=0x7f0b000b;
+        public static final int dice5=0x7f0b000c;
+        public static final int dice6=0x7f0b000d;
+        public static final int dice7=0x7f0b000f;
+        public static final int dice8=0x7f0b0010;
+        public static final int dice9=0x7f0b0011;
+        public static final int entrenamientos_title=0x7f0b0017;
+        public static final int fotoJugador=0x7f0b0020;
+        public static final int game_title=0x7f0b0005;
+        public static final int jugadores_ficha=0x7f0b001f;
+        public static final int jugadores_title=0x7f0b0028;
+        public static final int lstAllJugadores=0x7f0b0019;
+        public static final int lstJugadores=0x7f0b001c;
+        public static final int spinBuscarCategoria=0x7f0b0018;
+        public static final int tableRow1=0x7f0b0006;
+        public static final int tableRow2=0x7f0b000a;
+        public static final int tableRow3=0x7f0b000e;
         public static final int texto_help=0x7f0b0000;
-        public static final int titulo=0x7f0b0017;
+        public static final int titulo=0x7f0b0030;
+        public static final int txtAltura=0x7f0b0024;
+        public static final int txtCorreo=0x7f0b0002;
+        public static final int txtFechaNacimiento=0x7f0b0022;
+        public static final int txtInfoApp=0x7f0b0001;
+        public static final int txtListaMultiple=0x7f0b002a;
+        public static final int txtNombre=0x7f0b0021;
+        public static final int txtPeso=0x7f0b0023;
+        public static final int txtTelefono=0x7f0b0025;
+        public static final int txtVersion=0x7f0b0003;
     }
     public static final class layout {
         public static final int ayuda=0x7f030000;
         public static final int calendario=0x7f030001;
         public static final int entrenamiento=0x7f030002;
-        public static final int equipo=0x7f030003;
-        public static final int main=0x7f030004;
-        public static final int menu=0x7f030005;
-        public static final int menu_item=0x7f030006;
-        public static final int preferences_layout=0x7f030007;
-        public static final int splash=0x7f030008;
+        public static final int entrenamientos=0x7f030003;
+        public static final int equipo=0x7f030004;
+        public static final int jugador_ficha=0x7f030005;
+        public static final int jugadores=0x7f030006;
+        public static final int listamultiple=0x7f030007;
+        public static final int main=0x7f030008;
+        public static final int menu=0x7f030009;
+        public static final int menu_item=0x7f03000a;
+        public static final int preferences_layout=0x7f03000b;
+        public static final int splash=0x7f03000c;
     }
     public static final class raw {
         public static final int help=0x7f060000;
     }
     public static final class string {
+        /**  Botones 
+         */
+        public static final int anadir_button=0x7f0a000d;
         public static final int app_name=0x7f0a0000;
+        public static final int apps_button=0x7f0a0015;
         public static final int ayuda_title=0x7f0a0005;
+        /**  Entrenamientos 
+         */
+        public static final int buscarTitulo=0x7f0a001e;
+        public static final int buscar_button=0x7f0a000e;
         public static final int calendario_title=0x7f0a0006;
-        public static final int entrenamiento_title=0x7f0a0008;
+        public static final int crear_button=0x7f0a0012;
+        public static final int detalles_button=0x7f0a0014;
+        public static final int editar_button=0x7f0a0010;
+        public static final int eliminar_button=0x7f0a0011;
+        public static final int entrenamiento_title=0x7f0a0009;
+        public static final int entrenamientos_title=0x7f0a000c;
         public static final int equipo_title=0x7f0a0007;
+        public static final int ficha_button=0x7f0a0013;
+        public static final int jugadores_equipo=0x7f0a0008;
+        public static final int jugadores_ficha=0x7f0a000b;
+        public static final int jugadores_title=0x7f0a000a;
+        /**  Titulos 
+         */
         public static final int menu_title=0x7f0a0004;
+        public static final int salir_button=0x7f0a000f;
         public static final int splash_info=0x7f0a0003;
         public static final int splash_subtitle=0x7f0a0002;
         public static final int splash_title=0x7f0a0001;
+        public static final int txtAltura=0x7f0a0019;
+        public static final int txtCorreo=0x7f0a001c;
+        public static final int txtFechaNacimiento=0x7f0a0017;
+        /**  Ayuda 
+         */
+        public static final int txtInfoApp=0x7f0a001b;
+        /**  Ficha 
+         */
+        public static final int txtNombre=0x7f0a0016;
+        public static final int txtPeso=0x7f0a0018;
+        public static final int txtTelefono=0x7f0a001a;
+        public static final int txtVersion=0x7f0a001d;
     }
     public static final class xml {
         public static final int preferences=0x7f050000;

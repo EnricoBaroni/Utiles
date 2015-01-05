@@ -9,133 +9,45 @@
        	android:id="@+id/game_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/equipo_title"  
+        android:text="@string/jugadores_equipo"
+        android:gravity="center" 
         android:textColor="@color/version_bkgrd"/>
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-		 >
+   <ListView
+       android:id="@+id/lstJugadores"
+       android:layout_width="match_parent"
+       android:layout_height="353dp" >
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="1dp"
-            android:gravity="center"   >
-            
-        <ImageView
-            android:id="@+id/dice1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />
-        <ImageView
-            android:id="@+id/dice2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />
-         <ImageView
-            android:id="@+id/dice3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />     
-            
-        </TableRow>
+   </ListView>
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:paddingBottom="1dp"
-            android:gravity="center"   >
-        <ImageView
-            android:id="@+id/dice4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />
-        <ImageView
-            android:id="@+id/dice5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />
-         <ImageView
-            android:id="@+id/dice6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />        
-        </TableRow>
-        
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:paddingBottom="1dp"
-            android:gravity="center"   >
-          <ImageView
-            android:id="@+id/dice7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />
-        <ImageView
-            android:id="@+id/dice8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />
-         <ImageView
-            android:id="@+id/dice9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
-            android:src="@drawable/logosm" />        
-        </TableRow>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:paddingTop="40dp" >
 
-    </TableLayout>
-   
- 	<Button  
-        android:id="@+id/botonroll"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="gira" 
-        android:onClick="roll"    
-        android:textColor="@color/version_color"/>
- 	 <LinearLayout
- 	     android:id="@+id/confirmLayout"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:orientation="horizontal" 
-         android:visibility="gone"
-         android:gravity="center">
- 	<Button  
-        android:id="@+id/botonrollyes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/yes" 
-        android:onClick="rollconfirm"    
-        android:textColor="@color/version_color"/>
- 	  	<Button  
-        android:id="@+id/botonrollno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/no" 
-        android:onClick="rollcancel"    
-        android:textColor="@color/version_color"/>
- 	 </LinearLayout>
-     <Button  
-        android:id="@+id/botonmenu"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/menu_title"    
-        android:textColor="@color/version_color"/>
+       <Button
+           android:id="@+id/botonanadir"
+           android:layout_width="130dp"
+           android:layout_height="wrap_content"
+           android:onClick="roll"
+           android:text="@string/anadir_button"
+           android:textColor="@color/background_color" />
 
+       <Button
+           android:id="@+id/botoneliminar"
+           android:layout_width="50dp"
+           android:layout_height="wrap_content"
+           android:text="@string/eliminar_button"
+           android:textColor="@color/version_color" />
 
+       <Button
+           android:id="@+id/botoneditar"
+           android:layout_width="130dp"
+           android:layout_height="wrap_content"
+           android:text="@string/editar_button"
+           android:textColor="@color/background_color" />
+
+   </LinearLayout>
 
     </LinearLayout>
 

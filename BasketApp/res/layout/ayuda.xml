@@ -8,13 +8,47 @@
         android:id="@+id/texto_help"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ayuda_title"          
-        android:textColor="@color/version_bkgrd"
-        android:textSize="@dimen/help_text_size"/>
-    <Button  
-        android:id="@+id/botonmenu"
+        android:text="@string/ayuda_title"   
+        android:gravity="center"        
+        android:textColor="@color/version_bkgrd"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtInfoApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtInfoApp"
+            android:textColor="@color/menu_glow"
+       		android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/txtCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtCorreo"
+            android:paddingTop="5dp"
+            android:textColor="@color/menu_color"/>
+
+        <TextView
+            android:id="@+id/txtVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtVersion" 
+       		android:paddingTop="5dp"
+            android:textColor="@color/version_bkgrd" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/botonApps"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_title"   
-        android:textColor="@color/version_color"/>
+        android:text="@string/apps_button"
+       	android:paddingTop="5dp"
+        android:textColor="@color/background_color" />
+
 </LinearLayout>
