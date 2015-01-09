@@ -9,6 +9,8 @@
     <string name="ayuda_title">Ayuda</string>
     <string name="calendario_title">Calendario</string>
     <string name="equipo_title">Equipo</string>
+    <string name="equipos_title">Equipos</string>
+    <string name="equipos">Mis Equipos</string>
     <string name="jugadores_equipo">Mis Jugadores</string>
     <string name="entrenamiento_title">Entrenamiento</string>    
     <string name="jugadores_title">Jugadores</string>

@@ -24,7 +24,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.menu);
         
         String[] items = { getResources().getString(R.string.entrenamiento_title),
-                getResources().getString(R.string.equipo_title),
+                getResources().getString(R.string.equipos_title),
                 getResources().getString(R.string.calendario_title),
                 getResources().getString(R.string.ayuda_title) };
 
@@ -45,10 +45,10 @@ public class MenuActivity extends Activity {
                     startActivity(new Intent(MenuActivity.this,
                     		EntrenamientoActivity.class));
                 } else if (strText.equalsIgnoreCase(getResources().getString(
-                        R.string.equipo_title))) {
+                        R.string.equipos_title))) {
  
                     startActivity(new Intent(MenuActivity.this,
-                    		EquipoActivity.class));
+                    		EquiposActivity.class));
                 } else if (strText.equalsIgnoreCase(getResources().getString(
                         R.string.calendario_title))) {
 
