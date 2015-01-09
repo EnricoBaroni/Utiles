@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/ListView_Menu"
         android:layout_width="fill_parent"
-        android:divider="@drawable/divider"
-        android:listSelector="@color/title_color"
+        android:divider="@drawable/selector"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/RelativeLayout01"></ListView>
     <ImageView

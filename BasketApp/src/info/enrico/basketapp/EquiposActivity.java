@@ -16,17 +16,12 @@ public class EquiposActivity extends Activity {
 	boolean confirm;
 	static boolean yesOrNo = false;
 	ListView lstJugadores;
-    /** Called when the activity is first created. */
 	
 	 // Defined Array values to show in ListView
-    String[] values = new String[] { "Android List View", 
-                                     "Adapter implementation",
-                                     "Simple List View In Android",
-                                     "Create List View Android", 
-                                     "Android Example", 
-                                     "List View Source Code", 
-                                     "List View Array Adapter", 
-                                     "Android Example List View" 
+    String[] values = new String[] { "Burlada", 
+                                     "Mendillorri",
+                                     "San Cernin",
+                                     "Larraona"
                                     };
     //ArrayList<String> asd = new ArrayList<String>(); //USO BIDIMENSIONAL	
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -41,7 +36,7 @@ public class EquiposActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);    	
                
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.equipo);
+        setContentView(R.layout.equipos);
         
         lstJugadores = (ListView) findViewById(R.id.lstEquipos);
         lstJugadores.setAdapter(adapter);      

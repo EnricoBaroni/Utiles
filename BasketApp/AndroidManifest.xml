@@ -10,33 +10,29 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="info.enrico.basketapp.SplashActivity"
+            android:name="info.enrico.basketapp.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-                <activity
-            android:label="@string/menu_title"
-            android:name="info.enrico.basketapp.MenuActivity" >
+        </activity>                
+        <activity
+            android:label="@string/entrenamiento_title"
+            android:name="info.enrico.basketapp.EntrenamientoActivity" >
         </activity>
         <activity
-            android:label="@string/ayuda_title"
-            android:name="info.enrico.basketapp.AyudaActivity" >
+            android:label="@string/equipos_title"
+            android:name="info.enrico.basketapp.EquiposActivity" >
         </activity>
         <activity
             android:label="@string/calendario_title"
             android:name="info.enrico.basketapp.CalendarioActivity" >
         </activity>
         <activity
-            android:label="@string/entrenamiento_title"
-            android:name="info.enrico.basketapp.EntrenamientoActivity" >
-        </activity>
-        <activity
-            android:label="@string/equipo_title"
-            android:name="info.enrico.basketapp.EquipoActivity" >
+            android:label="@string/ayuda_title"
+            android:name="info.enrico.basketapp.AyudaActivity" >
         </activity>
     </application>
 

@@ -27,7 +27,7 @@
    </LinearLayout>
 
    <ListView
-       android:id="@+id/lstAllJugadores"
+       android:id="@+id/lstEntrenamientos"
        android:layout_width="match_parent"
        android:layout_height="353dp" >
 
@@ -39,7 +39,7 @@
        android:paddingTop="40dp" >
 
        <Button
-           android:id="@+id/botonbuscar"
+           android:id="@+id/botonbuscar_entrenamiento"
            android:layout_width="130dp"
            android:layout_height="wrap_content"
            android:onClick="roll"
@@ -47,7 +47,7 @@
            android:textColor="@color/background_color" />
 
        <Button
-           android:id="@+id/botoneliminar"
+           android:id="@+id/botoneliminar_entrenamiento"
            android:layout_width="50dp"
            android:layout_height="wrap_content"
            android:text="@string/eliminar_button"
