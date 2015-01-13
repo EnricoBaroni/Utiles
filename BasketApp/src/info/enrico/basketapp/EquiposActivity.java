@@ -123,7 +123,7 @@ public class EquiposActivity extends ListActivity {
 		startManagingCursor(cursor);
 
 		// Decimos qué campos queremos sacar
-		String[] campos = new String[] {"_id","equipo"};
+		String[] campos = new String[] {"idEquipo","nombreEquipo"};
 
 		// Decimos dónde cargaremos los datos en cada item de la lista
 		int[] dondeMostrarCampos = new int[] {R.id.jugador_num, R.id.jugador_nom };
