@@ -71,7 +71,7 @@ public class DbAdapter {
 	 * insertarEquipo
 	 * Inserta un registro con el nombre del equipo.
 	 * 
-	 * @param String nombre
+	 * @param String nombreEquipo
 	 * @return Devuelve el número de registro insertado 0 -1 en caso de error
 	 */
 	public long insertarEquipo(String nombre) {
@@ -79,7 +79,7 @@ public class DbAdapter {
 		ContentValues registro = new ContentValues();
 
 		// Agrega los datos.
-		registro.put("nombre", nombre);
+		registro.put("nombreEquipo", nombre);
 
 		// Inserta el registro y devuelve el resultado.
 		return db.insert("equipo", null, registro);
@@ -93,7 +93,7 @@ public class DbAdapter {
 	 * @return Devuelve el nº de registros afectados.
 	 */
 	public int borrarEquipo(long idEquipo) {
-		return db.delete("equipo",  "id = "
+		return db.delete("equipo",  "idEquipo = "
 				+ idEquipo, null);
 	}
 
@@ -104,7 +104,7 @@ public class DbAdapter {
 	 * @return Cursor Devuelve un cursor con los registros obtenidos.
 	 */
 	public Cursor obtenerEquipos() {
-		return db.query("equipo", new String[] {"idEquipo","nombre"}, null, null, null, null, null);
+		return db.query("equipo", new String[] {"idEquipo","nombreEquipo"}, null, null, null, null, null);
 	}
 
 	/**
@@ -116,8 +116,8 @@ public class DbAdapter {
 	 * @throws SQLException
 	 */
 	public Cursor obtenerEquipo (long idEquipo) throws SQLException {
-		Cursor equipo = db.query(true, "equipo",new String[] { "id","nombre"}, 
-									"id =" + idEquipo, null, null, null, null, null);
+		Cursor equipo = db.query(true, "equipo",new String[] { "idEquipo","nombreEquipo"}, 
+									"idEquipo =" + idEquipo, null, null, null, null, null);
 
 		// Si lo ha encontrado, apunta al inicio del cursor.
 		if (equipo != null) {
@@ -143,7 +143,7 @@ public class DbAdapter {
 
 		// Inserta el equipo y devuelve el resultado.
 		return db.update("equipo", equipo,
-				 "id=" + idEquipo, null);
+				 "idEquipo=" + idEquipo, null);
 	}
 	
 }

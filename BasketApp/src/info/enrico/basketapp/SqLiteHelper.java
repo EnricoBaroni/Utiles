@@ -29,7 +29,7 @@ class SqLiteHelper extends SQLiteOpenHelper {
 	// se ejecutará si no existe la BD, o sea, la primera vez
 	public final String SQLCREAR = "create table equipo "+
 			 " (idEquipo integer primary key autoincrement, " +
-			 " nombre text not null);";
+			 " nombreEquipo text not null);";
 
 	/**
 	 * Constructor
