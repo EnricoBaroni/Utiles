@@ -1,6 +1,5 @@
 package info.enrico.basketapp;
 
-import info.enrico.basketapp.Calendar.CalendarioActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
