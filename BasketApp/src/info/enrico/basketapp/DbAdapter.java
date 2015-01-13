@@ -115,7 +115,7 @@ public class DbAdapter {
 	 * @return Cursor un cursor con el registro obtenido.
 	 * @throws SQLException
 	 */
-	public Cursor obtenerTarea (long idEquipo) throws SQLException {
+	public Cursor obtenerEquipo (long idEquipo) throws SQLException {
 		Cursor equipo = db.query(true, "equipo",new String[] { "id","nombre"}, 
 									"id =" + idEquipo, null, null, null, null, null);
 
@@ -134,7 +134,7 @@ public class DbAdapter {
 	 * @param String nombre
 	 * @return int cantidad registros han sido afectados.
 	 */
-	public int actualizarTarea(long idEquipo, String nombre) {
+	public int actualizarEquipo(long idEquipo, String nombre) {
 		// Creamos un registro de equipo
 		ContentValues equipo = new ContentValues();
 

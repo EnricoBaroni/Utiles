@@ -6,11 +6,13 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -56,7 +58,11 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 	public ExtendedCalendarView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.context = context;
-		init();
+		try{
+			init();
+		}catch(Exception e){
+			Log.d("ENRICO", e.getMessage());
+		}
 	}
 	
 	public ExtendedCalendarView(Context context, AttributeSet attrs,int defStyle) {
@@ -65,6 +71,7 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 		init();
 	}
 	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB) 
 	private void init(){
 		cal = Calendar.getInstance();
 		base = new RelativeLayout(context);
@@ -219,6 +226,7 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 		rebuildCalendar();
 	}
 	
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD) 
 	private void rebuildCalendar(){
 		if(month != null){
 			month.setText(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())+" "+cal.get(Calendar.YEAR));

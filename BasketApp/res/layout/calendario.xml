@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
 
    <TextView
        	android:id="@+id/game_title"
@@ -23,16 +22,12 @@
     		android:layout_width="match_parent"/>
 
 	</RelativeLayout>
-   
- 	
-     <Button  
-        android:id="@+id/botonmenu"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/menu_title"    
-        android:textColor="@color/version_color"/>
-
-
+    	<Button  
+        	android:id="@+id/botonmenu"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:text="@string/menu_title"    
+        	android:textColor="@color/version_color"/>
 
     </LinearLayout>
 
