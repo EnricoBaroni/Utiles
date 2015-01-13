@@ -14,8 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class AyudaActivity extends Activity {
-    /** Called when the activity is first created. */
-    @Override
+	TextView helpText;
+	
+	@Override
     public void onCreate(Bundle savedInstanceState) {
     	//Pantalla Completa
     	requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -30,7 +31,7 @@ public class AyudaActivity extends Activity {
         InputStream iFile = getResources().openRawResource(R.raw.help);
         
         // Cargamos el textview donde pondremos la chapa
-        TextView helpText = (TextView) findViewById(R.id.texto_help);
+        TextView helpText = (TextView) findViewById(R.id.txtInfoApp);
         
         // Cargamos el contenido del fichero
         String strFile = leerFichero(iFile);
@@ -40,7 +41,7 @@ public class AyudaActivity extends Activity {
         
         // Si pinchamos en el botón para volver al menú
         // lo que hacemos es cerrar la activity actual.
-        Button botonmenu = (Button) findViewById(R.id.botonmenu);
+        Button botonmenu = (Button) findViewById(R.id.botonApps);
        botonmenu.setOnClickListener(new View.OnClickListener() {
     	    public void onClick(View view) {
     	    	AyudaActivity.this.finish();

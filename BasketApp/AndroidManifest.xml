@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:label="@string/calendario_title"
-            android:name="info.enrico.basketapp.CalendarioActivity" >
+            android:name="info.enrico.basketapp.Calendar.CalendarioActivity" >
         </activity>
         <activity
             android:label="@string/ayuda_title"

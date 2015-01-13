@@ -17,17 +17,16 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content" >
 
-       <Spinner
+      <Spinner
            android:id="@+id/spinBuscarCategoria"
            android:layout_width="0dp"
            android:layout_height="40dp"
            android:layout_weight="1" />
 
-
    </LinearLayout>
 
    <ListView
-       android:id="@+id/lstEntrenamientos"
+       android:id="@android:id/list"
        android:layout_width="match_parent"
        android:layout_height="353dp" >
 
@@ -52,6 +51,8 @@
            android:layout_height="wrap_content"
            android:text="@string/eliminar_button"
            android:textColor="@color/version_color" />
+
+      
 
    </LinearLayout>
 

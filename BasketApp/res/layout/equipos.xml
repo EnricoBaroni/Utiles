@@ -14,7 +14,7 @@
         android:textColor="@color/version_bkgrd"/>
 
    <ListView
-       android:id="@+id/lstEquipos"
+       android:id="@android:id/list"
        android:layout_width="match_parent"
        android:layout_height="353dp" >
 

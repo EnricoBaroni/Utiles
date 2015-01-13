@@ -1,6 +1,10 @@
-package info.enrico.basketapp;
+package info.enrico.basketapp.Calendar;
 
+import info.enrico.basketapp.MenuActivity;
 import info.enrico.basketapp.R;
+import info.enrico.basketapp.R.id;
+import info.enrico.basketapp.R.layout;
+import info.enrico.basketapp.R.xml;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
