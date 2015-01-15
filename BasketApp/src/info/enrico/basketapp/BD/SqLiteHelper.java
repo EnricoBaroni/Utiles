@@ -1,4 +1,4 @@
-package info.enrico.basketapp;
+package info.enrico.basketapp.BD;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,11 +25,21 @@ class SqLiteHelper extends SQLiteOpenHelper {
 	// que decidimos nosotros
 	public static final int VERSION_BD = 1;
 
-	// String Sql de creación de la tabla
+	// String Sql de creación de la tabla equipos y jugadores
 	// se ejecutará si no existe la BD, o sea, la primera vez
-	public final String SQLCREAR = "create table equipo "+
+	public final String SQLCREAREQUIPOS = "create table equipos "+
 			 " (idEquipo integer primary key autoincrement, " +
 			 " nombreEquipo text not null);";
+	public final String SQLCREARJUGADORES = "create table jugadores " +
+			 " (idJugador integer primary key autoincrement, " +
+			 " nombreJugador text not null, " +
+			 " idEquipoJugador text, " +
+			 " fechNacJugador text, " +
+			 " pesoJugador integer, " +
+			 " alturaJugador integer, " +
+			 " tfnJugador integer, " +
+			 " imagenJugador text, " +
+			 " detallesJugador text);";
 
 	/**
 	 * Constructor
@@ -48,11 +58,14 @@ class SqLiteHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// Se ejecuta la sentencia de creación de la tabla equipo.
-		db.execSQL("DROP TABLE IF EXISTS equipo");
-		db.execSQL(SQLCREAR);
-		Log.d("DEBUG","Ok, BD creada");
+		db.execSQL("DROP TABLE IF EXISTS equipos");
+		db.execSQL("DROP TABLE IF EXISTS jugadores");
+		db.execSQL(SQLCREAREQUIPOS);
+		Log.d("DEBUG","Ok, BD equipos creada");
+		db.execSQL(SQLCREARJUGADORES);
+		Log.d("DEBUG","Ok, BD jugadores creada");
 	}
-
+		  
 	/**
 	 * onUpgrade
 	 * Se ejecuta de forma automáticamente en caso de que
@@ -67,7 +80,7 @@ class SqLiteHelper extends SQLiteOpenHelper {
 
 		// En este caso en el upgrade realmente
 		// lo que hacemos es cargarnos lo que hay...
-		db.execSQL("DROP TABLE IF EXISTS equipo");
+		//db.execSQL("DROP TABLE IF EXISTS equipos");
 
 		// ... y lo volvemos a generar
 		onCreate(db);

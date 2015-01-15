@@ -1,6 +1,10 @@
-package info.enrico.basketapp;
+package info.enrico.basketapp.Activity;
+
+import java.util.ArrayList;
 
 import info.enrico.basketapp.R;
+import info.enrico.basketapp.BD.DbAdapter;
+import info.enrico.basketapp.Class.Equipo;
 
 import android.app.ListActivity;
 import android.database.Cursor;
@@ -115,24 +119,16 @@ public class EquiposActivity extends ListActivity {
 	 * de la BD
 	 */
 	void rellenarListView() {
-		// Hacemos la consulta y obtenemos el cursor
-		// que apunta a los datos
-		cursor = db.obtenerEquipos();
-
-		// Prepara el cursor para su uso.
-		startManagingCursor(cursor);
-
-		// Decimos qué campos queremos sacar
-		String[] campos = new String[] {"idEquipo","nombreEquipo"};
-
-		// Decimos dónde cargaremos los datos en cada item de la lista
-		int[] dondeMostrarCampos = new int[] {R.id.jugador_num, R.id.jugador_nom };
+		ArrayList<Equipo> equipos;
+		// Hacemos la consulta y guardamos todos los equipos
+		equipos = db.obtenerEquipos();
 
 		// Crea un adaptador para poder mostrar los datos en el ListView.
-		SimpleCursorAdapter tareas = new SimpleCursorAdapter(this,R.layout.jugador_item, cursor, campos,dondeMostrarCampos);
-
+		ArrayAdapter<Equipo> adaptador = new ArrayAdapter<Equipo>(this,R.layout.jugador_item,equipos) {
+		};
+				
 		// Asigna el adaptador al ListView.
-		lstEquipos.setAdapter(tareas);
+		lstEquipos.setAdapter(adaptador);
 		
 		// Le asociamos un listener para saber cuál clickamos
 		lstEquipos.setOnItemClickListener(new OnItemClickListener() {

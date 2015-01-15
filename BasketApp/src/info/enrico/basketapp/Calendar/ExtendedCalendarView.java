@@ -71,7 +71,6 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 		init();
 	}
 	
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB) 
 	private void init(){
 		cal = Calendar.getInstance();
 		base = new RelativeLayout(context);
@@ -226,7 +225,6 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 		rebuildCalendar();
 	}
 	
-	@TargetApi(Build.VERSION_CODES.GINGERBREAD) 
 	private void rebuildCalendar(){
 		if(month != null){
 			month.setText(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())+" "+cal.get(Calendar.YEAR));

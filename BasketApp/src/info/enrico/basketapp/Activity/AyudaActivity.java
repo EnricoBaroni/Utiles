@@ -1,6 +1,9 @@
-package info.enrico.basketapp;
+package info.enrico.basketapp.Activity;
 
 import info.enrico.basketapp.R;
+import info.enrico.basketapp.R.id;
+import info.enrico.basketapp.R.layout;
+import info.enrico.basketapp.R.raw;
 
 import java.io.InputStream;
 

@@ -1,4 +1,4 @@
-package info.enrico.basketapp;
+package info.enrico.basketapp.Activity;
 
 import info.enrico.basketapp.R;
 import android.app.Activity;
