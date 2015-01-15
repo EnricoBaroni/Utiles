@@ -2,34 +2,34 @@ package info.enrico.basketapp.Class;
 
 public class Dibujo {
 
-	private int idEquipo;
-	private String nombreEquipo;
+	private int idDibujo;
+	private String nombreDibujo;
 	
 	public Dibujo(){}
 	
-	public Dibujo(int idEquipo, String nombreEquipo){
-		this.idEquipo = idEquipo;
-		this.nombreEquipo = nombreEquipo;
+	public Dibujo(int idDibujo, String nombreDibujo){
+		this.idDibujo = idDibujo;
+		this.nombreDibujo = nombreDibujo;
 	}
 
-	public int getIdEquipo() {
-		return idEquipo;
+	public int getIdDibujo() {
+		return idDibujo;
 	}
 
-	public void setIdEquipo(int idEquipo) {
-		this.idEquipo = idEquipo;
+	public void setIdDibujo(int idDibujo) {
+		this.idDibujo = idDibujo;
 	}
 
-	public String getNombreEquipo() {
-		return nombreEquipo;
+	public String getNombreDibujo() {
+		return nombreDibujo;
 	}
 
-	public void setNombreEquipo(String nombreEquipo) {
-		this.nombreEquipo = nombreEquipo;
+	public void setNombreDibujo(String nombreDibujo) {
+		this.nombreDibujo = nombreDibujo;
 	}
 
 	@Override
 	public String toString() {
-		return "Equipo [idEquipo=" + idEquipo + " / nombreEquipo=" + nombreEquipo + "]";
+		return "Dibujo [idDibujo=" + idDibujo + " / nombreDibujo=" + nombreDibujo + "]";
 	}	
 }

@@ -1,111 +1,84 @@
 package info.enrico.basketapp.Class;
 
+import java.util.ArrayList;
+
 public class Entrenamiento {
 
-	private int idJugador;
-	private String nombreJugador;
-	private int idEquipoJugador;	
-	private String fechNacJugador;
-	private int pesoJugador;
-	private int alturaJugador;
-	private int tfnJugador;
-	private String imagenJugador; //En principio lo ponemos string para evitar problemas
-	private String detallesJugador; //Podran ser varios, pero los repartiremos con un split
+	private int idEntrenamiento;
+	private String nombreEntrenamiento;
+	private ArrayList<Categoria> categoriasEntrenamiento;	
+	private ArrayList<Dibujo> dibujosEntrenamiento;
+	private String explicacionEntrenamiento;
+	private String notasEntrenamiento; //Podran ser varios, pero los repartiremos con un split
 	
 	public Entrenamiento(){}
 	
-	public Entrenamiento(int idJugador, String nombreJugador, int idEquipoJugador, String fechNacJugador, 
-			int pesoJugador, int alturaJugador, int tfnJugador, 
-			String imagenJugador, String detallesJugador){
-		this.idJugador = idJugador;
-		this.nombreJugador = nombreJugador;
-		this.idEquipoJugador = idEquipoJugador;		
-		this.fechNacJugador = fechNacJugador;
-		this.pesoJugador = pesoJugador;
-		this.alturaJugador = alturaJugador;
-		this.tfnJugador = tfnJugador;
-		this.imagenJugador = imagenJugador;
-		this.detallesJugador = detallesJugador;
+	public Entrenamiento(int idEntrenamiento, String nombreEntrenamiento, ArrayList<Categoria> categoriasEntrenamiento, 
+			ArrayList<Dibujo> dibujosEntrenamiento, String explicacionEntrenamiento, String notasEntrenamiento){
+		this.idEntrenamiento = idEntrenamiento;
+		this.nombreEntrenamiento = nombreEntrenamiento;
+		this.categoriasEntrenamiento = categoriasEntrenamiento;		
+		this.dibujosEntrenamiento = dibujosEntrenamiento;
+		this.explicacionEntrenamiento = explicacionEntrenamiento;
+		this.notasEntrenamiento = notasEntrenamiento;
 	}
 
-	public int getIdJugador() {
-		return idJugador;
+	public int getIdEntrenamiento() {
+		return idEntrenamiento;
 	}
 
-	public void setIdJugador(int idJugador) {
-		this.idJugador = idJugador;
-	}
-	
-	public int getIdEquipoJugador() {
-		return idEquipoJugador;
+	public void setIdEntrenamiento(int idEntrenamiento) {
+		this.idEntrenamiento = idEntrenamiento;
 	}
 
-	public void setIdEquipoJugador(int idEquipoJugador) {
-		this.idEquipoJugador = idEquipoJugador;
+	public String getNombreEntrenamiento() {
+		return nombreEntrenamiento;
 	}
 
-	public String getNombreJugador() {
-		return nombreJugador;
+	public void setNombreEntrenamiento(String nombreEntrenamiento) {
+		this.nombreEntrenamiento = nombreEntrenamiento;
 	}
 
-	public void setNombreJugador(String nombreJugador) {
-		this.nombreJugador = nombreJugador;
+	public ArrayList<Categoria> getCategoriasEntrenamiento() {
+		return categoriasEntrenamiento;
 	}
 
-	public String getFechNacJugador() {
-		return fechNacJugador;
+	public void setCategoriasEntrenamiento(
+			ArrayList<Categoria> categoriasEntrenamiento) {
+		this.categoriasEntrenamiento = categoriasEntrenamiento;
 	}
 
-	public void setFechNacJugador(String fechNacJugador) {
-		this.fechNacJugador = fechNacJugador;
+	public ArrayList<Dibujo> getDibujosEntrenamiento() {
+		return dibujosEntrenamiento;
 	}
 
-	public int getPesoJugador() {
-		return pesoJugador;
+	public void setDibujosEntrenamiento(ArrayList<Dibujo> dibujosEntrenamiento) {
+		this.dibujosEntrenamiento = dibujosEntrenamiento;
 	}
 
-	public void setPesoJugador(int pesoJugador) {
-		this.pesoJugador = pesoJugador;
+	public String getExplicacionEntrenamiento() {
+		return explicacionEntrenamiento;
 	}
 
-	public int getAlturaJugador() {
-		return alturaJugador;
+	public void setExplicacionEntrenamiento(String explicacionEntrenamiento) {
+		this.explicacionEntrenamiento = explicacionEntrenamiento;
 	}
 
-	public void setAlturaJugador(int alturaJugador) {
-		this.alturaJugador = alturaJugador;
+	public String getNotasEntrenamiento() {
+		return notasEntrenamiento;
 	}
 
-	public int getTfnJugador() {
-		return tfnJugador;
-	}
-
-	public void setTfnJugador(int tfnJugador) {
-		this.tfnJugador = tfnJugador;
-	}
-
-	public String getImagenJugador() {
-		return imagenJugador;
-	}
-
-	public void setImagenJugador(String imagenJugador) {
-		this.imagenJugador = imagenJugador;
-	}
-
-	public String getDetallesJugador() {
-		return detallesJugador;
-	}
-
-	public void setDetallesJugador(String detallesJugador) {
-		this.detallesJugador = detallesJugador;
+	public void setNotasEntrenamiento(String notasEntrenamiento) {
+		this.notasEntrenamiento = notasEntrenamiento;
 	}
 
 	@Override
 	public String toString() {
-		return "Jugador [idJugador=" + idJugador + " / idEquipoJugador=" + idEquipoJugador 
-				+ " / nombreJugador=" + nombreJugador + " /  fechNacJugador=" + fechNacJugador 
-				+ " /  pesoJugador=" + pesoJugador + " /  alturaJugador="+ alturaJugador 
-				+ " /  tfnJugador=" + tfnJugador + " / imagenJugador=" + imagenJugador 
-				+ " /  detallesJugador=" + detallesJugador + "]";
+		return "Entrenamiento [idEntrenamiento=" + idEntrenamiento
+				+ ", nombreEntrenamiento=" + nombreEntrenamiento
+				+ ", categoriasEntrenamiento=" + categoriasEntrenamiento
+				+ ", dibujosEntrenamiento=" + dibujosEntrenamiento
+				+ ", explicacionEntrenamiento=" + explicacionEntrenamiento
+				+ ", notasEntrenamiento=" + notasEntrenamiento + "]";
 	}
 }
