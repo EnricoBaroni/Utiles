@@ -2,21 +2,21 @@ package info.enrico.basketapp.Class;
 
 public class Dibujo {
 
-	private int idDibujo;
+	private String idDibujo;
 	private String nombreDibujo;
 	
 	public Dibujo(){}
 	
-	public Dibujo(int idDibujo, String nombreDibujo){
+	public Dibujo(String idDibujo, String nombreDibujo){
 		this.idDibujo = idDibujo;
 		this.nombreDibujo = nombreDibujo;
 	}
 
-	public int getIdDibujo() {
+	public String getIdDibujo() {
 		return idDibujo;
 	}
 
-	public void setIdDibujo(int idDibujo) {
+	public void setIdDibujo(String idDibujo) {
 		this.idDibujo = idDibujo;
 	}
 

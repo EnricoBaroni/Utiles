@@ -25,7 +25,8 @@ class SqLiteHelper extends SQLiteOpenHelper {
 	// que decidimos nosotros
 	public static final int VERSION_BD = 1;
 
-	// String Sql de creación de la tabla equipos y jugadores
+	// String Sql de creación de la tabla equipos, jugadores, entrenamientos, dibujos y categorias 
+	//TODO Crear o no tablas dibujos y categorias para tema arrays.
 	// se ejecutará si no existe la BD, o sea, la primera vez
 	public final String SQLCREAREQUIPOS = "create table equipos "+
 			 " (idEquipo integer primary key autoincrement, " +
@@ -40,6 +41,19 @@ class SqLiteHelper extends SQLiteOpenHelper {
 			 " tfnJugador integer, " +
 			 " imagenJugador text, " +
 			 " detallesJugador text);";
+	public final String SQLCREARENTRENAMIENTOS = "create table entrenamientos " +
+			 " (idEntrenamiento integer primary key autoincrement, " +
+			 " nombreEntrenamiento text not null, " +
+			 " idCategoriaEntrenamiento text, " +
+			 " idDibujoEntrenamiento text, " +
+			 " explicacionEntrenamiento text, " +
+			 " notasEntrenamiento text);";
+	public final String SQLCREARDIBUJOS = "create table dibujos "+
+			 " (idDibujo string primary key, " +
+			 " nombreDibujo text not null);";
+	public final String SQLCREARCATEGORIAS = "create table categorias "+
+			 " (idCategoria string primary key, " +
+			 " nombreCategoria text not null);";
 
 	/**
 	 * Constructor
@@ -60,10 +74,19 @@ class SqLiteHelper extends SQLiteOpenHelper {
 		// Se ejecuta la sentencia de creación de la tabla equipo.
 		db.execSQL("DROP TABLE IF EXISTS equipos");
 		db.execSQL("DROP TABLE IF EXISTS jugadores");
+		db.execSQL("DROP TABLE IF EXISTS entrenamientos");
+		db.execSQL("DROP TABLE IF EXISTS dibujos");
+		db.execSQL("DROP TABLE IF EXISTS categorias");
 		db.execSQL(SQLCREAREQUIPOS);
 		Log.d("DEBUG","Ok, BD equipos creada");
 		db.execSQL(SQLCREARJUGADORES);
 		Log.d("DEBUG","Ok, BD jugadores creada");
+		db.execSQL(SQLCREARENTRENAMIENTOS);
+		Log.d("DEBUG","Ok, BD entrenamientos creada");
+		db.execSQL(SQLCREARDIBUJOS);
+		Log.d("DEBUG","Ok, BD dibujos creada");
+		db.execSQL(SQLCREARCATEGORIAS);
+		Log.d("DEBUG","Ok, BD categorias creada");
 	}
 		  
 	/**

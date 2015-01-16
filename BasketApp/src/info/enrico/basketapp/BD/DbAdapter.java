@@ -1,10 +1,12 @@
 package info.enrico.basketapp.BD;
 
+import info.enrico.basketapp.Class.Categoria;
+import info.enrico.basketapp.Class.Dibujo;
+import info.enrico.basketapp.Class.Entrenamiento;
 import info.enrico.basketapp.Class.Equipo;
 import info.enrico.basketapp.Class.Jugador;
 
 import java.util.ArrayList;
-
 
 import android.content.Context;
 import android.database.Cursor;
@@ -32,7 +34,6 @@ public class DbAdapter {
 	// El contexto nos servirá para referirnos a la Activity
 	// en la que estamos
 	private final Context contexto;
-
 
 	/**
 	 * DbAdapter
@@ -86,6 +87,109 @@ public class DbAdapter {
 		insertQuery = "INSERT INTO equipos (nombreEquipo) VALUES ('" + nombreEquipoInsertar + "');";
 
 		Log.e("ENRICO", "Query insertar equipo realizada");
+		final Cursor a = db.rawQuery(insertQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					
+				} while (a.moveToNext());
+					   
+				a.close();
+				return 0; //Todo correcto
+			}
+		}
+		a.close();
+		return -1; //No se inserta nada
+	}
+	
+	/**
+	 * insertarDibujo
+	 * Inserta un registro con el nombre del dibujo.
+	 * 
+	 * @param nombreDibujoInsertar
+	 * @return 0 = Se ha insertado correctamente. -1 = Ya existe el idDibujo
+	 */
+	public int insertarDibujo(String idDibujoInsertar, String nombreDibujoInsertar) {
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String insertQuery = "";
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT nombreDibujo FROM dibujos WHERE idDibujo='" + idDibujoInsertar + "';";
+
+		Log.e("ENRICO", "Query comprobar existe dibujo realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a.moveToFirst()) {
+			a.close();
+			
+			insertQuery = "INSERT INTO dibujos (idDibujo, nombreDibujo) VALUES ('" 
+			+ idDibujoInsertar + "','" 
+			+ nombreDibujoInsertar + "');";
+			
+			Log.e("ENRICO", "Query insertar dibujo realizada");
+			final Cursor b = db.rawQuery(insertQuery, null);
+			
+			b.close();	
+			return 0; //Todo correcto
+		}
+		a.close();
+		return -1; //No se inserta nada
+	}
+	
+	/**
+	 * insertarCategoria
+	 * Inserta un registro con el nombre de la categoria.
+	 * 
+	 * @param nombreCategoriaInsertar
+	 * @return 0 = Se ha insertado correctamente. -1 = Ya existe el idCategoria
+	 */
+	public int insertarCategoria(String idCategoriaInsertar, String nombreCategoriaInsertar) {
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String insertQuery = "";
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT nombreCategoria FROM categorias WHERE idCategoria='" + idCategoriaInsertar + "';";
+
+		Log.e("ENRICO", "Query comprobar existe categoria realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a.moveToFirst()) {
+			a.close();
+			
+			insertQuery = "INSERT INTO categorias (idCategoria, nombreCategoria) VALUES ('" 
+			+ idCategoriaInsertar + "','" 
+			+ nombreCategoriaInsertar + "');";
+			
+			Log.e("ENRICO", "Query insertar categoria realizada");
+			final Cursor b = db.rawQuery(insertQuery, null);
+			
+			b.close();	
+			return 0; //Todo correcto
+		}
+		a.close();
+		return -1; //No se inserta nada
+	}
+	
+	/**
+	 * insertarEntrenamiento
+	 * Inserta un registro con el nombre del entrenamiento.
+	 * 
+	 * @param nombreEntrenamientoInsertar
+	 * @return 0 = Se ha insertado correctamente. -1 = No se ha insertado nada.
+	 */
+	public int insertarEntrenamiento(String nombreEntrenamientoInsertar, String idCategoriaEntrenamientoInsertar, 
+			String idDibujoEntrenamientoInsertar, String explicacionEntrenamientoInsertar, String notasEntrenamientoInsertar) {
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String insertQuery = "";
+			  		 
+		insertQuery = "INSERT INTO entrenamientos (nombreEntrenamiento, idCategoriaEntrenamiento, idDibujoEntrenamiento, " +
+				"explicacionEntrenamiento, notasEntrenamiento) VALUES ('" + 
+				nombreEntrenamientoInsertar + "','" + 
+				idCategoriaEntrenamientoInsertar + "','" + 
+				idDibujoEntrenamientoInsertar + "','" + 
+				explicacionEntrenamientoInsertar + "','" + 
+				notasEntrenamientoInsertar
+				+ "');";
+
+		Log.e("ENRICO", "Query insertar entrenamiento realizada");
 		final Cursor a = db.rawQuery(insertQuery, null);
 		if (a != null) {
 			if (a.moveToFirst()) {
@@ -190,6 +294,96 @@ public class DbAdapter {
 	}
 	
 	/**
+	 * borrarDibujo
+	 * Borra el registro que tiene el id especificado.
+	 * 
+	 * @param idDibujoBorrar id del registro a borrar
+	 * @return Devuelve el nº de registros afectados.
+	 * @return 0 = No se han borrado dibujos.
+	 */
+	public int borrarDibujo(String idDibujoBorrar) {
+		int numDibujo = 0; //Numero de dibujos borrados, simplemente por si me interesa indicarlo
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String deleteQuery = "";
+			  		 
+		deleteQuery = "DELETE FROM dibujos WHERE idDibujo='" + idDibujoBorrar + "';";
+
+		Log.e("ENRICO", "Query delete dibujos realizada");
+		final Cursor a = db.rawQuery(deleteQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					numDibujo +=1;     					
+				} while (a.moveToNext());
+				a.close();				
+				return numDibujo;
+			}
+		}
+		a.close();
+		return 0; //No se ha eliminado ningun dibujo
+	}
+	
+	/**
+	 * borrarCategoria
+	 * Borra el registro que tiene el id especificado.
+	 * 
+	 * @param idCategoriaBorrar id del registro a borrar
+	 * @return Devuelve el nº de registros afectados.
+	 * @return 0 = No se han borrado categorias.
+	 */
+	public int borrarCategoria(String idCategoriaBorrar) {
+		int numCategoria = 0; //Numero de categorias borrados, simplemente por si me interesa indicarlo
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String deleteQuery = "";
+			  		 
+		deleteQuery = "DELETE FROM categorias WHERE idCategoriaBorrar='" + idCategoriaBorrar + "';";
+
+		Log.e("ENRICO", "Query delete categorias realizada");
+		final Cursor a = db.rawQuery(deleteQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					numCategoria+=1;     					
+				} while (a.moveToNext());
+				a.close();				
+				return numCategoria;
+			}
+		}
+		a.close();
+		return 0; //No se ha eliminado ninguna categoria
+	}
+	
+	/**
+	 * borrarEntrenamiento
+	 * Borra el registro que tiene el id especificado.
+	 * 
+	 * @param idEntrenamientoBorrar id del registro a borrar
+	 * @return Devuelve el nº de registros afectados.
+	 * @return 0 = No se han borrado equipos.
+	 */
+	public int borrarEntrenamiento(int idEntrenamientoBorrar) {
+		int numEntrenamiento = 0; //Numero de entrenamientos borrados, simplemente por si me interesa indicarlo
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String deleteQuery = "";
+			  		 
+		deleteQuery = "DELETE FROM entrenamientos WHERE idEntrenamiento='" + idEntrenamientoBorrar + "';";
+
+		Log.e("ENRICO", "Query delete entrenamientos realizada");
+		final Cursor a = db.rawQuery(deleteQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					numEntrenamiento+=1;     					
+				} while (a.moveToNext());
+				a.close();				
+				return numEntrenamiento;
+			}
+		}
+		a.close();
+		return 0; //No se ha eliminado ningun entrenamiento
+	}
+	
+	/**
 	 * borrarJugador
 	 * Borra el registro que tiene el id especificado.
 	 * @param idEquipoBorrar id del registro a borrar
@@ -246,6 +440,112 @@ public class DbAdapter {
 					   
 				a.close();
 				return equipoObtenido;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
+	 * obtenerDibujo
+	 * Obtiene el dibujo que tiene el id especificado
+	 * 
+	 * @param idDibujoObtener id del registro que se quiere obtener.
+	 * @return dibujoObtenido
+	 */
+	public Dibujo obtenerDibujo(String idDibujoObtener) {
+		Dibujo dibujoObtenido;
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM dibujos WHERE idDibujo='" + idDibujoObtener + "';";
+
+		Log.e("ENRICO", "Query select dibujo realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final String idDibujo = a.getString(a.getColumnIndex("idDibujo"));
+					final String nombreDibujo = a.getString(a.getColumnIndex("nombreDibujo"));     
+			      		      
+					dibujoObtenido = new Dibujo(idDibujo,nombreDibujo);			       
+					
+				} while (a.moveToNext());
+					   
+				a.close();
+				return dibujoObtenido;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
+	 * obtenerCategoria
+	 * Obtiene la categoria que tiene el id especificado
+	 * 
+	 * @param idCategoriaObtener id del registro que se quiere obtener.
+	 * @return categoriaObtenida
+	 */
+	public Categoria obtenerCategoria(String idCategoriaObtener) {
+		Categoria categoriaObtenida;
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM categorias WHERE idCategoria='" + idCategoriaObtener + "';";
+
+		Log.e("ENRICO", "Query select categoria realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final String idCategoria = a.getString(a.getColumnIndex("idCategoria"));
+					final String nombreCategoria = a.getString(a.getColumnIndex("nombreCategoria"));     
+			      		      
+					categoriaObtenida = new Categoria(idCategoria,nombreCategoria);			       
+					
+				} while (a.moveToNext());
+					   
+				a.close();
+				return categoriaObtenida;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
+	 * obtenerEntrenamiento
+	 * Obtiene el jugador que tiene el id especificado
+	 * 
+	 * @param idEntrenamientoObtener id del registro que se quiere obtener.
+	 * @return entrenamientoObtenido
+	 */
+	public Entrenamiento obtenerEntrenamiento(int idEntrenamientoObtener) {
+		Entrenamiento entrenamientoObtenido;
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM entrenamientos WHERE idEntrenamiento='" + idEntrenamientoObtener + "';";
+
+		Log.e("ENRICO", "Query select entrenamiento realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final int idEntrenamiento = a.getInt(a.getColumnIndex("idEntrenamiento"));
+					final String nombreEntrenamiento = a.getString(a.getColumnIndex("nombreEntrenamiento"));
+					final String idCategoriaEntrenamiento = a.getString(a.getColumnIndex("idCategoriaEntrenamiento")); 
+					final String idDibujoEntrenamiento = a.getString(a.getColumnIndex("idDibujoEntrenamiento")); 
+					final String explicacionEntrenamiento = a.getString(a.getColumnIndex("explicacionEntrenamiento")); 
+					final String notasEntrenamiento = a.getString(a.getColumnIndex("notasEntrenamiento")); 
+			      		      
+					entrenamientoObtenido = new Entrenamiento(idEntrenamiento,nombreEntrenamiento,idCategoriaEntrenamiento,idDibujoEntrenamiento,explicacionEntrenamiento,notasEntrenamiento);			       
+					
+				} while (a.moveToNext());
+					   
+				a.close();
+				return entrenamientoObtenido;
 			}
 		}
 		a.close();
@@ -327,6 +627,110 @@ public class DbAdapter {
 	}
 	
 	/**
+	 * obtenerDibujos
+	 * Obtiene todos los dibujos de la tabla dibujos.
+	 * 
+	 * @return Devuelve un array con todos los dibujos
+	 */
+	public ArrayList<Dibujo> obtenerDibujos() {
+		final ArrayList<Dibujo> dibujos = new ArrayList<Dibujo>();
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM dibujos;";
+
+		Log.e("ENRICO", "Query select dibujos realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final String idDibujo = a.getString(a.getColumnIndex("idDibujo"));
+					final String nombreDibujo = a.getString(a.getColumnIndex("nombreDibujo"));     
+			      		      
+					final Dibujo e = new Dibujo(idDibujo,nombreDibujo);			       
+					dibujos.add(e);
+				} while (a.moveToNext());
+					   
+				a.close();
+				return dibujos;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
+	 * obtenerCategorias
+	 * Obtiene todos los categorias de la tabla categorias.
+	 * 
+	 * @return Devuelve un array con todos los categorias
+	 */
+	public ArrayList<Categoria> obtenerCategorias() {
+		final ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM categorias;";
+
+		Log.e("ENRICO", "Query select categorias realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final String idCategoria = a.getString(a.getColumnIndex("idCategoria"));
+					final String nombreCategoria = a.getString(a.getColumnIndex("nombreCategoria"));     
+			      		      
+					final Categoria e = new Categoria(idCategoria,nombreCategoria);			       
+					categorias.add(e);
+				} while (a.moveToNext());
+					   
+				a.close();
+				return categorias;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
+	 * obtenerEntrenamientos
+	 * Obtiene todos los entrenamientos de la tabla entrenamientos.
+	 * 
+	 * @return Devuelve un array con todos los entrenamientos
+	 */
+	public ArrayList<Entrenamiento> obtenerEntrenamientos() {
+		final ArrayList<Entrenamiento> entrenamientos = new ArrayList<Entrenamiento>();
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM entrenamientos;";
+
+		Log.e("ENRICO", "Query select entrenamientos realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final int idEntrenamiento = a.getInt(a.getColumnIndex("idEntrenamiento"));
+					final String nombreEntrenamiento = a.getString(a.getColumnIndex("nombreEntrenamiento"));
+					final String idCategoriaEntrenamiento = a.getString(a.getColumnIndex("idCategoriaEntrenamiento")); 
+					final String idDibujoEntrenamiento = a.getString(a.getColumnIndex("idDibujoEntrenamiento")); 
+					final String explicacionEntrenamiento = a.getString(a.getColumnIndex("explicacionEntrenamiento")); 
+					final String notasEntrenamiento = a.getString(a.getColumnIndex("notasEntrenamiento")); 
+			      		      
+					final Entrenamiento e = new Entrenamiento(idEntrenamiento,nombreEntrenamiento,idCategoriaEntrenamiento,idDibujoEntrenamiento,explicacionEntrenamiento,notasEntrenamiento);			       
+								       
+					entrenamientos.add(e);
+				} while (a.moveToNext());
+					   
+				a.close();
+				return entrenamientos;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
 	 * obtenerJugadores
 	 * Obtiene todos los jugadores de la tabla jugadores.
 	 * 
@@ -398,6 +802,110 @@ public class DbAdapter {
 		}
 		a.close();
 		return 0; //No se ha actualizado ningun equipo
+	}
+	
+	/**
+	 * actualizarDibujo
+	 * Hace un UPDATE de los valores del registro cuyo id es idDibujoActualizar.
+	 * 
+	 * @param int idDibujoActualizar id del dibujo que se quiere modificar.
+	 * @param nombreDibujoActualizar
+	 * @return 0 = No se ha actualizado ningun dibujo. 
+	 * @return num = Numero de dibujos actualizados. Deberia ser 1 ya que el id es unico.
+	 */
+	public int actualizarDibujo(String idDibujoActualizar, String nombreDibujoActualizar) {
+		int num = 0; //Numero de dibujos actualizados
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String updateQuery = "";
+			  		 
+		updateQuery = "UPDATE dibujos SET nombreDibujo='" + nombreDibujoActualizar 
+				+ "' WHERE idDibujo='" + idDibujoActualizar + "';";
+
+		Log.e("ENRICO", "Query update dibujos realizada");
+		final Cursor a = db.rawQuery(updateQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					num +=1;
+				} while (a.moveToNext());
+					   
+				a.close();
+				return num; //Numero de dibujos actualizados. Deberia ser 1
+			}
+		}
+		a.close();
+		return 0; //No se ha actualizado ningun dibujo
+	}
+	
+	/**
+	 * actualizarCategoria
+	 * Hace un UPDATE de los valores del registro cuyo id es idCategoriaActualizar.
+	 * 
+	 * @param int idCategoriaActualizar id de la categoria que se quiere modificar.
+	 * @param nombreCategoriaActualizar
+	 * @return 0 = No se ha actualizado ninguna categoria. 
+	 * @return num = Numero de categorias actualizados. Deberia ser 1 ya que el id es unico.
+	 */
+	public int actualizarCategoria(String idCategoriaActualizar, String nombreCategoriaActualizar) {
+		int num = 0; //Numero de categorias actualizados
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String updateQuery = "";
+			  		 
+		updateQuery = "UPDATE equipos SET nombreCategoria='" + nombreCategoriaActualizar 
+				+ "' WHERE idCategoria='" + idCategoriaActualizar + "';";
+
+		Log.e("ENRICO", "Query update categoria realizada");
+		final Cursor a = db.rawQuery(updateQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					num +=1;
+				} while (a.moveToNext());
+					   
+				a.close();
+				return num; //Numero de categorias actualizados. Deberia ser 1
+			}
+		}
+		a.close();
+		return 0; //No se ha actualizado ninguna categoria
+	}
+	
+	/**
+	 * actualizarEntrenamiento
+	 * Hace un UPDATE de los valores del registro cuyo id es idEntrenamientoActualizar.
+	 * 
+	 * @param Todos los registros del entrenamiento
+	 * @return 0 = No se ha actualizado ningun entrenamiento. 
+	 * @return num = Numero de entrenamientos actualizados. Deberia ser 1 ya que el id es unico.
+	 */
+	public int actualizarEntrenamiento(int idEntrenamientoActualizar, String nombreEntrenamientoInsertar, 
+			String idCategoriaEntrenamientoInsertar, String idDibujoEntrenamientoInsertar, 
+			String explicacionEntrenamientoInsertar, String notasEntrenamientoInsertar) {
+		int num = 0; //Numero de jugadores actualizados
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String updateQuery = "";
+			  		 
+		updateQuery = "UPDATE jugadores SET nombreJugador='" + nombreEntrenamientoInsertar 
+				+ "', nombreEntrenamiento='" + nombreEntrenamientoInsertar 
+				+ "', idCategoriaEntrenamiento='" + idCategoriaEntrenamientoInsertar 
+				+ "', idDibujoEntrenamiento='" + idDibujoEntrenamientoInsertar 
+				+ "', explicacionEntrenamiento='" + explicacionEntrenamientoInsertar 
+				+ "', notasEntrenamiento='" + notasEntrenamientoInsertar + "';";
+
+		Log.e("ENRICO", "Query update entrenamiento realizada");
+		final Cursor a = db.rawQuery(updateQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					num +=1;
+				} while (a.moveToNext());
+					   
+				a.close();
+				return num; //Numero de entrenamientos actualizados. Deberia ser 1
+			}
+		}
+		a.close();
+		return 0; //No se ha actualizado ningun entrenamiento
 	}
 	
 	/**

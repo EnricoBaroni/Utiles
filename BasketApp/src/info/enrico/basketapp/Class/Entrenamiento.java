@@ -1,20 +1,18 @@
 package info.enrico.basketapp.Class;
 
-import java.util.ArrayList;
-
 public class Entrenamiento {
 
 	private int idEntrenamiento;
 	private String nombreEntrenamiento;
-	private ArrayList<Categoria> categoriasEntrenamiento;	
-	private ArrayList<Dibujo> dibujosEntrenamiento;
+	private String categoriasEntrenamiento;	
+	private String dibujosEntrenamiento;
 	private String explicacionEntrenamiento;
-	private String notasEntrenamiento; //Podran ser varios, pero los repartiremos con un split
+	private String notasEntrenamiento; 
 	
 	public Entrenamiento(){}
 	
-	public Entrenamiento(int idEntrenamiento, String nombreEntrenamiento, ArrayList<Categoria> categoriasEntrenamiento, 
-			ArrayList<Dibujo> dibujosEntrenamiento, String explicacionEntrenamiento, String notasEntrenamiento){
+	public Entrenamiento(int idEntrenamiento, String nombreEntrenamiento, String categoriasEntrenamiento, 
+			String dibujosEntrenamiento, String explicacionEntrenamiento, String notasEntrenamiento){
 		this.idEntrenamiento = idEntrenamiento;
 		this.nombreEntrenamiento = nombreEntrenamiento;
 		this.categoriasEntrenamiento = categoriasEntrenamiento;		
@@ -39,20 +37,20 @@ public class Entrenamiento {
 		this.nombreEntrenamiento = nombreEntrenamiento;
 	}
 
-	public ArrayList<Categoria> getCategoriasEntrenamiento() {
+	public String getCategoriasEntrenamiento() {
 		return categoriasEntrenamiento;
 	}
 
 	public void setCategoriasEntrenamiento(
-			ArrayList<Categoria> categoriasEntrenamiento) {
+			String categoriasEntrenamiento) {
 		this.categoriasEntrenamiento = categoriasEntrenamiento;
 	}
 
-	public ArrayList<Dibujo> getDibujosEntrenamiento() {
+	public String getDibujosEntrenamiento() {
 		return dibujosEntrenamiento;
 	}
 
-	public void setDibujosEntrenamiento(ArrayList<Dibujo> dibujosEntrenamiento) {
+	public void setDibujosEntrenamiento(String dibujosEntrenamiento) {
 		this.dibujosEntrenamiento = dibujosEntrenamiento;
 	}
 

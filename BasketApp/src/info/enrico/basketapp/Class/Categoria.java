@@ -2,21 +2,21 @@ package info.enrico.basketapp.Class;
 
 public class Categoria {
 
-	private int idCategoria;
+	private String idCategoria;
 	private String nombreCategoria;
 	
 	public Categoria(){}
 	
-	public Categoria(int idCategoria, String nombreCategoria){
+	public Categoria(String idCategoria, String nombreCategoria){
 		this.idCategoria = idCategoria;
 		this.nombreCategoria = nombreCategoria;
 	}
 
-	public int getIdCategoria() {
+	public String getIdCategoria() {
 		return idCategoria;
 	}
 
-	public void setIdCategoria(int idCategoria) {
+	public void setIdCategoria(String idCategoria) {
 		this.idCategoria = idCategoria;
 	}
 
