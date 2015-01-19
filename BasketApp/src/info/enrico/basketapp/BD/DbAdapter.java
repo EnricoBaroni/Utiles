@@ -212,7 +212,7 @@ public class DbAdapter {
 	 * @param todos los del jugador
 	 * @return 0 = Se ha insertado correctamente. -1 = No se ha insertado nada.
 	 */
-	public int insertarJugador(String nombreJugadorInsertar, String idEquipoJugadorInsertar, 
+	public int insertarJugador(String nombreJugadorInsertar, int idEquipoJugadorInsertar, 
 			String fechNacJugadorInsertar, int pesoJugadorInsertar, int alturaJugadorInsertar, 
 			int tfnJugadorInsertar, String imagenJugadorInsertar, String detallesJugadorInsertar) {
 		final SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -772,6 +772,47 @@ public class DbAdapter {
 	}
 	
 	/**
+	 * obtenerJugadoresEquipo
+	 * Obtiene los jugadores con el idEquipoJugador seleccionado
+	 * 
+	 * @return Devuelve un array con todos los jugadores del equipo
+	 */
+	public ArrayList<Jugador> obtenerJugadoresEquipo(int idEquipoJugadorObtener) {
+		final ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String selectQuery = "";
+			  		 
+		selectQuery = "SELECT * FROM equipos WHERE idEquipoJugador='" + idEquipoJugadorObtener +"';";
+
+		Log.e("ENRICO", "Query select jugadores equipo realizada");
+		final Cursor a = db.rawQuery(selectQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					final int idJugador = a.getInt(a.getColumnIndex("idJugador"));
+					final String nombreJugador = a.getString(a.getColumnIndex("nombreJugador"));
+					final int idEquipoJugador = a.getInt(a.getColumnIndex("idEquipoJugador")); 
+					final String fechNacJugador = a.getString(a.getColumnIndex("fechNacJugador")); 
+					final int pesoJugador = a.getInt(a.getColumnIndex("pesoJugador")); 
+					final int alturaJugador = a.getInt(a.getColumnIndex("alturaJugador")); 
+					final int tfnJugador = a.getInt(a.getColumnIndex("tfnJugador")); 
+					final String imagenJugador = a.getString(a.getColumnIndex("imagenJugador")); 
+					final String detallesJugador = a.getString(a.getColumnIndex("detallesJugador")); 
+			      		      
+					final Jugador e = new Jugador(idJugador,nombreJugador,idEquipoJugador,fechNacJugador,pesoJugador,alturaJugador,tfnJugador,imagenJugador,detallesJugador);			       
+								       
+					jugadores.add(e);
+				} while (a.moveToNext());
+					   
+				a.close();
+				return jugadores;
+			}
+		}
+		a.close();
+		return null;
+	}
+	
+	/**
 	 * actualizarEquipo
 	 * Hace un UPDATE de los valores del registro cuyo id es idEquipoActualizar.
 	 * 
@@ -935,6 +976,38 @@ public class DbAdapter {
 				+ "' WHERE idJugador='" + idJugadorActualizar + "';";
 
 		Log.e("ENRICO", "Query update jugador realizada");
+		final Cursor a = db.rawQuery(updateQuery, null);
+		if (a != null) {
+			if (a.moveToFirst()) {
+				do {
+					num +=1;
+				} while (a.moveToNext());
+					   
+				a.close();
+				return num; //Numero de jugadores actualizados. Deberia ser 1
+			}
+		}
+		a.close();
+		return 0; //No se ha actualizado ningun jugador
+	}
+	
+	/**
+	 * actualizarJugadorEquipo
+	 * Hace un UPDATE del equipo del jugador
+	 * 
+	 * @param id del Jugador a Actualizar, nuevo Equipo del jugador
+	 * @return 0 = No se ha actualizado ningun jugador. 
+	 * @return num = Numero de jugadores actualizados. Deberia ser 1 ya que el id es unico.
+	 */
+	public int actualizarJugadorEquipo(int idJugadorActualizar, int idEquipoActualizar) {
+		int num = 0;
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+		String updateQuery = "";  	 
+		
+		updateQuery = "UPDATE jugadores SET idEquipoJugador='" + idEquipoActualizar 
+				+ "' WHERE idJugador='" + idJugadorActualizar + "';";
+
+		Log.e("ENRICO", "Query update equipojugador realizada");
 		final Cursor a = db.rawQuery(updateQuery, null);
 		if (a != null) {
 			if (a.moveToFirst()) {

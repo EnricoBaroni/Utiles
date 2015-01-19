@@ -12,6 +12,12 @@
         android:text="@string/jugadores_title"
         android:gravity="center" 
         android:textColor="@color/version_bkgrd"/>
+   
+   <TextView 
+		    android:id="@+id/txtSeleccionadoJugadores"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:text="" />
 
    <ListView
        android:id="@+id/lstAllJugadores"
@@ -26,7 +32,7 @@
        android:paddingTop="40dp" >
 
        <Button
-           android:id="@+id/botonanadir"
+           android:id="@+id/botonAnadirJugador"
            android:layout_width="130dp"
            android:layout_height="wrap_content"
            android:onClick="roll"
@@ -34,14 +40,14 @@
            android:textColor="@color/background_color" />
 
        <Button
-           android:id="@+id/botoneliminar"
+           android:id="@+id/botonEliminarJugador"
            android:layout_width="50dp"
            android:layout_height="wrap_content"
            android:text="@string/eliminar_button"
            android:textColor="@color/version_color" />
 
        <Button
-           android:id="@+id/botoncrear"
+           android:id="@+id/botonCrearJugador"
            android:layout_width="130dp"
            android:layout_height="wrap_content"
            android:text="@string/crear_button"

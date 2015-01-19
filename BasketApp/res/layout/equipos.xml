@@ -14,12 +14,12 @@
         android:textColor="@color/version_bkgrd"/>
 
    <TextView 
-		    android:id="@+id/txtseleccionado"
+		    android:id="@+id/txtSeleccionadoEquipos"
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
 			android:text="" />
    <ListView
-       android:id="@android:id/list"
+       android:id="@+id/lstEquipos"
        android:layout_width="match_parent"
        android:layout_height="353dp" 
        android:choiceMode="singleChoice">
@@ -30,41 +30,22 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:paddingTop="40dp" >
-
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="match_parent"
-           android:orientation="vertical" >
-			
-			<EditText 
-		    	android:id="@+id/etNuevoEquipo"
-				android:layout_width="fill_parent" 
-				android:layout_height="wrap_content"
-				android:inputType="text" />
-			
-           <Button
-               android:id="@+id/botonanadir"
-               android:layout_width="130dp"
-               android:layout_height="wrap_content"
-               android:onClick="roll"
-               android:text="@string/anadir_button"
-               android:textColor="@color/background_color" />
-
-       </LinearLayout>
+						
+       <Button
+           android:id="@+id/botonAnadirEquipos"
+           android:layout_width="130dp"
+           android:layout_height="wrap_content"
+           android:text="@string/anadir_button"
+		   android:onClick="lanzarActivityAnadir"
+           android:textColor="@color/background_color" />
 
        <Button
-           android:id="@+id/botoneliminar"
+           android:id="@+id/botonEliminarEquipos"
            android:layout_width="50dp"
            android:layout_height="wrap_content"
            android:text="@string/eliminar_button"
+		   android:onClick="eliminarEquipo"
            android:textColor="@color/version_color" />
-
-       <Button
-           android:id="@+id/botoneditar"
-           android:layout_width="130dp"
-           android:layout_height="wrap_content"
-           android:text="@string/editar_button"
-           android:textColor="@color/background_color" />
 
    </LinearLayout>
 

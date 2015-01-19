@@ -23,7 +23,7 @@
            android:layout_height="wrap_content" >
 
            <ImageView
-               android:id="@+id/fotoJugador"
+               android:id="@+id/fotoJugadorFicha"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/logosm" />
@@ -38,7 +38,7 @@
                    android:layout_height="wrap_content" >
 
                    <TextView
-                       android:id="@+id/txtNombre"
+                       android:id="@+id/txtNombreFicha"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:text="@string/txtNombre" />
@@ -50,7 +50,7 @@
                    android:layout_height="wrap_content" >
 
                    <TextView
-                       android:id="@+id/txtFechaNacimiento"
+                       android:id="@+id/txtFechaNacimientoFicha"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:text="@string/txtFechaNacimiento" />
@@ -71,7 +71,7 @@
                android:layout_weight="1" >
 
                <TextView
-                   android:id="@+id/txtPeso"
+                   android:id="@+id/txtPesoFicha"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="@string/txtPeso" />
@@ -83,7 +83,7 @@
                android:layout_weight="1">
 
                <TextView
-                   android:id="@+id/txtAltura"
+                   android:id="@+id/txtAlturaFicha"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="@string/txtAltura" />
@@ -95,7 +95,7 @@
            android:layout_height="wrap_content" >
 
            <TextView
-               android:id="@+id/txtTelefono"
+               android:id="@+id/txtTelefonoFicha"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="@string/txtTelefono" />
@@ -108,7 +108,7 @@
            android:paddingTop="20dp" >
 
            <Button
-               android:id="@+id/botonficha"
+               android:id="@+id/botonFichaFicha"
                android:layout_width="100dp"
                android:layout_height="wrap_content"
                android:onClick="roll"
@@ -116,14 +116,14 @@
                android:textColor="@color/background_color" />
 
            <Button
-               android:id="@+id/botondetalles"
+               android:id="@+id/botonDetallesFicha"
                android:layout_width="100dp"
                android:layout_height="wrap_content"
                android:text="@string/detalles_button"
                android:textColor="@color/background_color" />
 
            <Button
-               android:id="@+id/botoneditar"
+               android:id="@+id/botonEditarFicha"
                android:layout_width="100dp"
                android:layout_height="wrap_content"
                android:text="@string/editar_button"

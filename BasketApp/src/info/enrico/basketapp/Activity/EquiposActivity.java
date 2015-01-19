@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import info.enrico.basketapp.R;
 import info.enrico.basketapp.BD.DbAdapter;
 import info.enrico.basketapp.Class.Equipo;
+import info.enrico.basketapp.Class.Jugador;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,12 +28,9 @@ import android.widget.AdapterView.OnItemClickListener;
 public class EquiposActivity extends ListActivity {
 	Button botonanadir;
 	Button botoneliminar;
-	Button botoneditar;
-	ListView lstEquipos;
-	
+	ListView lista;
 	// Variable para manejar la base de datos.
 		private DbAdapter db;
-		private EditText nuevoEquipo;
 		private TextView txtSeleccionado;
 	    private Cursor cursor = null;
 	    private int seleccionado = -1;
@@ -52,134 +51,76 @@ public class EquiposActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.equipos);
         
-       // Defined Array values to show in ListView
-       // String[] items = new String[] { "Burlada",
-       //                                  "Mendillorri",
-       //                                  "San Cernin",
-       //                                  "Larraona"
-       //                                 };
-        
-        // En esta caja de texto meteremos nuevos equipos
-     	nuevoEquipo = (EditText) findViewById(R.id.etNuevoEquipo);
-
      	// Un textview que informa del equipo que se encuentra seleccionado actualmente
-     	txtSeleccionado = (TextView) findViewById(R.id.txtseleccionado);
-     	
-     	// Crea un objeto manipulador de base de datos y abre una conexiï¿½n.
+     	txtSeleccionado = (TextView) findViewById(R.id.txtSeleccionadoEquipos);
+     	//Botones
+        botonanadir = (Button) this.findViewById(R.id.botonAnadirEquipos);
+        botoneliminar = (Button) this.findViewById(R.id.botonEliminarEquipos);
+        //Lista
+     	lista = (ListView) findViewById(R.id.lstEquipos);
+		ArrayList<Equipo> arrayequip = new ArrayList<Equipo>();
+	
      	db = new DbAdapter(this);
      	db.open();
-
-     	// Rellena el elemento ListView con los registros de la tabla equipos.
-     	this.rellenarListView();
      	
-     	
-        botonanadir = (Button) this.findViewById(R.id.botonanadir);
-        botoneliminar = (Button) this.findViewById(R.id.botoneliminar);
-        botoneditar = (Button) this.findViewById(R.id.botoneditar);
-        lstEquipos = getListView();  
-        
-        //ArrayList<String> asd = new ArrayList<String>(); //USO BIDIMENSIONAL	
-        //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,
-        //	    R.layout.menu_item, items);
-        //lstEquipos.setAdapter(adaptador);
-        
-        
-        Log.d("ENRICO","OnClick Añadir");
-        botonanadir.setOnClickListener(new View.OnClickListener() {
-    	    public void onClick(View view) {
-    	    	Log.d("ENRICO","Dentro OnClick Añadir");
-    	    	//Intent miIntent = new Intent(EntrenamientoActivity.this, EquiposActivity.class);
-    	    	//startActivity(miIntent);
-    	    	//EntrenamientoActivity.this.finish();
-    	    }
-    	});
-        Log.d("ENRICO","OnClick Eliminar");
-        botoneliminar.setOnClickListener(new View.OnClickListener() {
-    	    public void onClick(View view) {
-    	    	Log.d("ENRICO","Dentro OnClick Eliminar");
-    	    	//Intent miIntent = new Intent(EntrenamientoActivity.this, EquiposActivity.class);
-    	    	//startActivity(miIntent);
-    	    	//EntrenamientoActivity.this.finish();
-    	    }
-    	});
-        Log.d("ENRICO","OnClick Editar");
-        botoneditar.setOnClickListener(new View.OnClickListener() {
-    	    public void onClick(View view) {
-    	    	Log.d("ENRICO","Dentro OnClick Editar");
-    	    	//Intent miIntent = new Intent(EntrenamientoActivity.this, EquiposActivity.class);
-    	    	//startActivity(miIntent);
-    	    	//EntrenamientoActivity.this.finish();
-    	    }
-    	});
-    }
-    
-    /**
-	 * rellenarListView
-	 * Método con el que rellenamos el ListView con los registros
-	 * de la BD
-	 */
-	void rellenarListView() {
-		ArrayList<Equipo> equipos;
-		// Hacemos la consulta y guardamos todos los equipos
-		equipos = db.obtenerEquipos();
-
-		// Crea un adaptador para poder mostrar los datos en el ListView.
-		ArrayAdapter<Equipo> adaptador = new ArrayAdapter<Equipo>(this,R.layout.jugador_item,equipos) {
-		};
-				
-		// Asigna el adaptador al ListView.
-		lstEquipos.setAdapter(adaptador);
+     	//En principio se muestra un mensaje al usuario en una ventanita, 
+     	//pero por si queremos mostrarlo de otra manera lo pillamos. 
+     	//Nombre del equipo añadido
+     	Bundle b = getIntent().getExtras();
+     	String resultadoAnadir = b.getString("resultadoAnadir");
 		
+     	arrayequip = db.obtenerEquipos(); //CARGA TODOS LOS EQUIPOS
+     	
+     	AdapterEquipos adapter = new AdapterEquipos(this, arrayequip);
+		lista.setAdapter(adapter);
+     	
 		// Le asociamos un listener para saber cuál clickamos
-		lstEquipos.setOnItemClickListener(new OnItemClickListener() {
+		lista.setOnItemClickListener(new OnItemClickListener() {
 
-		    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		    	// 	Sacamos el registro de la posición que han seleccionado (arg2)
-		    	Cursor elementoSeleccionado = (Cursor) arg0.getItemAtPosition(arg2);
-
-		    	// Nos guardamos el ID del registro
-		    	seleccionado = elementoSeleccionado.getInt(0);
-		    	
-		    	// Sacamos info por el textview
-		    	txtSeleccionado.setText("Has seleccionado: " + seleccionado);
-		    	
-		    	Log.d("DEBUG","Clickado el elemento con el identificador: " + seleccionado);
-		    }
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				// Sacamos el registro de la posición que han seleccionado (arg2)
+				Cursor elementoSeleccionado = (Cursor) arg0.getItemAtPosition(arg2);
+				// Nos guardamos el ID del registro
+				seleccionado = elementoSeleccionado.getInt(0);		
+				
+				// Sacamos info por el textview
+				txtSeleccionado.setText("Has seleccionado: " + seleccionado);				    	
+				Log.d("ENRICO","Clickado el elemento con el identificador: " + seleccionado);				
+				lanzarActivityEquipo(db.obtenerEquipo(seleccionado).getIdEquipo());				
+			}
 		});
+    }
 	
-		Log.d("DEBUG","Lista cargada desde BD");
-	}
-
-
 	/**
-	 * insertarRegistro
-	 * Toma la información de la caja de texto y la inserta
-	 * como nuevo registro
-	 * @param v
+	 * actualizarLista
+	 * La lista tipo ListView tiene asociado un Cursor,
+	 * nos basta con hacer un requery para que se refresque
 	 */
-	public void insertarRegistro (View v) {
-		String texto = nuevoEquipo.getText().toString();
-		// Inserta los valores de las cajas de texto en la tabla notas.
-		db.insertarEquipo(texto);
-
-		// Actualiza los datos del elemento ListView.
-		actualizarLista();
-
-		// Notificamos al usuario
-		Toast.makeText(getApplicationContext(), "Registro insertado: " + texto, Toast.LENGTH_SHORT).show();
-		
-		// Vacíamos la caja de texto
-		nuevoEquipo.setText("");
+	private void actualizarLista () {
+		cursor.requery();
 	}
 	
+	public void lanzarActivityEquipo(int idEquipo) {
+		Intent intent = new Intent(EquiposActivity.this, EquipoActivity.class);
+		Bundle b = new Bundle();
+		b.putInt("idEquipo", seleccionado);
+		intent.putExtras(b);
+		startActivity(intent);
+		finish();
+	}
+
+	public void lanzarActivityAnadir() {
+		Intent intent = new Intent(EquiposActivity.this, AnadirEquipoActivity.class);		
+		startActivity(intent);
+		finish();
+	}
 	/**
-	 * eliminarRegistro
-	 * Recupera el id del registro que habiamos seleccionado 
+	 * eliminarEquipo
+	 * Recupera el id del equipo que habiamos seleccionado 
 	 * y el manda a la BD que lo elimine
 	 * @param v
 	 */
-	public void eliminarRegistro (View v) {
-		
+	public void eliminarEquipo (View v) {
 		// Si no tenemos nada seleccionado nos vamos.
 		if (seleccionado == -1) {return;}
 		
@@ -199,15 +140,5 @@ public class EquiposActivity extends ListActivity {
 
 		// Notificamos al usuario
 		Toast.makeText(getApplicationContext(), "Registro eliminado: " + seleccionado, Toast.LENGTH_SHORT).show();
-
-	}
-	
-	/**
-	 * actualizarLista
-	 * La lista tipo ListView tiene asociado un Cursor,
-	 * nos basta con hacer un requery para que se refresque
-	 */
-	private void actualizarLista () {
-		cursor.requery();
 	}
 }

@@ -12,7 +12,13 @@
         android:text="@string/jugadores_equipo"
         android:gravity="center" 
         android:textColor="@color/version_bkgrd"/>
-
+   
+ 	<TextView 
+		    android:id="@+id/txtSeleccionadoEquipo"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:text="" />
+ 
    <ListView
        android:id="@+id/lstJugadores"
        android:layout_width="match_parent"
@@ -23,25 +29,26 @@
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:orientation="horizontal"
        android:paddingTop="40dp" >
 
        <Button
-           android:id="@+id/botonanadir"
+           android:id="@+id/botonAnadirJugadorEquipo"
            android:layout_width="130dp"
            android:layout_height="wrap_content"
-           android:onClick="roll"
            android:text="@string/anadir_button"
            android:textColor="@color/background_color" />
 
        <Button
-           android:id="@+id/botoneliminar"
+           android:id="@+id/botonEliminarJugadorEquipo"
            android:layout_width="50dp"
            android:layout_height="wrap_content"
            android:text="@string/eliminar_button"
+		   android:onClick="eliminarJugadorEquipo"
            android:textColor="@color/version_color" />
 
        <Button
-           android:id="@+id/botoneditar"
+           android:id="@+id/botonEditarEquipo"
            android:layout_width="130dp"
            android:layout_height="wrap_content"
            android:text="@string/editar_button"
