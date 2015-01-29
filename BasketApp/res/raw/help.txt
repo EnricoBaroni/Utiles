@@ -1,3 +1,0 @@
-Help
-----
-This app helps basket trainers to administer their teams. 
